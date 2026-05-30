@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товар - Мебельлэнд</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="/" class="logo">Мебельлэнд</a>
+        <div class="auth-box" id="auth-box"></div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/catalog.html">Каталог</a>
+            <a href="/categories.html">Категории</a>
+            <a href="/components.html">Компоненты</a>
+            <a href="/about.html">О компании</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="product-details">
+        <div class="gallery">
+            <img id="main-image" src="/images/placeholder.jpg" alt="Product">
+            <div class="thumbnails" id="product-thumbnails"></div>
+        </div>
+        <div class="info">
+            <h1 id="product-name">Загрузка...</h1>
+            <div class="price" id="product-price"></div>
+            <div class="description" id="product-desc"></div>
+
+            <h3>Характеристики</h3>
+            <ul class="attr-list" id="product-attributes"></ul>
+
+            <h3>Компоненты</h3>
+            <ul class="comp-list" id="product-components"></ul>
+        </div>
+    </div>
+
+    <section class="similar-section">
+        <h2>Похожие товары</h2>
+        <div id="similar-products" class="grid-products"></div>
+    </section>
+</main>
+
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Вход</h2>
+        <form id="auth-form">
+            <input type="email" id="auth-email" placeholder="Email" required>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <input type="text" id="auth-fullname" placeholder="ФИО" class="hidden">
+            <input type="text" id="auth-phone" placeholder="Телефон" class="hidden">
+            <button type="submit">Войти</button>
+        </form>
+        <p id="auth-switch">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+    </div>
+</div>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

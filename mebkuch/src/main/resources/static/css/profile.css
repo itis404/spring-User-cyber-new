@@ -1,0 +1,387 @@
+.profile-container {
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+    min-height: 500px;
+}
+
+.profile-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.profile-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.avatar-circle {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #1e2a3a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-nav-btn {
+    padding: 12px 16px;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #4a5568;
+}
+
+.profile-nav-btn:hover {
+    background: #f7fafc;
+    color: #1e2a3a;
+}
+
+.profile-nav-btn.active {
+    background: var(--primary);
+    color: #1e2a3a;
+}
+
+.profile-content {
+    flex: 1;
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--card-shadow);
+}
+
+.profile-tab {
+    display: none;
+}
+
+.profile-tab.active {
+    display: block;
+}
+
+.profile-tab h2 {
+    margin-bottom: 24px;
+    color: #1e2a3a;
+    font-size: 1.5rem;
+}
+
+.profile-info {
+    margin-bottom: 24px;
+}
+
+.info-row {
+    display: flex;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.info-label {
+    width: 150px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.info-value {
+    flex: 1;
+    color: #1e2a3a;
+}
+
+.edit-profile-btn {
+    background: var(--primary);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+}
+
+.edit-profile-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.edit-form {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+}
+
+.edit-form h3 {
+    margin-bottom: 20px;
+    color: #1e2a3a;
+}
+
+.edit-form .form-group {
+    margin-bottom: 20px;
+}
+
+.edit-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.edit-form .form-group input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.edit-form .form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.edit-form .form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 0.75rem;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.save-btn, .cancel-btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.save-btn {
+    background: var(--primary);
+    color: #1e2a3a;
+}
+
+.save-btn:hover {
+    background: var(--primary-hover);
+}
+
+.cancel-btn {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Список заказов и избранного */
+.orders-list, .favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-card, .favorite-card {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.order-card:hover, .favorite-card:hover {
+    box-shadow: var(--card-shadow);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.info-loading {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 1rem;
+}
+
+.temporary-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+.temporary-message.success {
+    background: #38a169;
+}
+
+.temporary-message.error {
+    background: #e53e3e;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+    }
+
+    .profile-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .profile-nav-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .info-label {
+        width: 100%;
+    }
+}
+.error-message {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    padding: 5px 10px;
+    background: #fee;
+    border-radius: 8px;
+    animation: fadeInUp 0.2s ease;
+}
+
+.form-group input.error {
+    border-color: #e53e3e;
+    background: #fff5f5;
+}
+
+.form-group input.error:focus {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.form-group input:disabled {
+    background: #f1f3f5;
+    cursor: not-allowed;
+    color: #999;
+}
+
+.favourite-card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+}
+
+.favourite-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.favourite-card-content {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.favourite-card-content img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.favourite-product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1e2a3a;
+}
+
+.favourite-product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e2a3a;
+}
+
+.remove-favourite-btn {
+    background: #fee;
+    border: none;
+    color: #e53e3e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.remove-favourite-btn:hover {
+    background: #fdd;
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .favourite-card-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .favourite-card-content img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .remove-favourite-btn {
+        align-self: center;
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой профиль - Мебельлэнд</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="/" class="logo">Мебельлэнд</a>
+        <div class="auth-box" id="auth-box"></div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/catalog.html">Каталог</a>
+            <a href="/categories.html">Категории</a>
+            <a href="/components.html">Компоненты</a>
+            <a href="/about.html">О компании</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="profile-container">
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                <div class="avatar-circle">
+                    <span id="avatar-initials"></span>
+                </div>
+            </div>
+            <div class="profile-nav">
+                <button class="profile-nav-btn active" data-tab="info">Личная информация</button>
+                <button class="profile-nav-btn" data-tab="orders">Мои заказы</button>
+                <button class="profile-nav-btn" data-tab="favorites">Избранное</button>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div id="tab-info" class="profile-tab active">
+                <h2>Личная информация</h2>
+                <div class="profile-info" id="user-info">
+                    <div class="info-loading">Загрузка...</div>
+                </div>
+                <button id="edit-profile-btn" class="edit-profile-btn">Редактировать телефон</button>
+
+                <div id="edit-form" class="edit-form hidden">
+                    <h3>Редактирование телефона</h3>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" id="edit-phone" placeholder="+7 (XXX) XXX-XX-XX">
+                        <div id="phone-error" class="error-message" style="display: none;"></div>
+                        <small>Формат: только цифры (10-15 символов), возможно с + в начале</small>
+                    </div>
+                    <div class="form-buttons">
+                        <button id="save-profile-btn" class="save-btn">Сохранить</button>
+                        <button id="cancel-edit-btn" class="cancel-btn">Отмена</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-orders" class="profile-tab">
+                <h2>Мои заказы</h2>
+                <div id="orders-list" class="orders-list">
+                    <div class="info-loading">Загрузка заказов...</div>
+                </div>
+            </div>
+
+            <div id="tab-favorites" class="profile-tab">
+                <h2>Избранное</h2>
+                <div id="favorites-list" class="favorites-list">
+                    <div class="info-loading">Загрузка избранного...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

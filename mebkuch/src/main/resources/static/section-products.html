@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары секции - Мебельлэнд</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/catalog.css">
+    <style>
+        .section-header {
+            background: linear-gradient(135deg, #1e2a3a 0%, #2d3e50 100%);
+            padding: 40px 20px;
+            border-radius: 24px;
+            margin: 20px 0 30px;
+            text-align: center;
+            color: white;
+        }
+        .section-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="/" class="logo">Мебельлэнд</a>
+        <div class="auth-box" id="auth-box"></div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/catalog.html">Каталог</a>
+            <a href="/categories.html">Категории</a>
+            <a href="/components.html">Компоненты</a>
+            <a href="/about.html">О компании</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="section-header">
+        <h1 id="section-name">Загрузка...</h1>
+        <a href="/" class="back-link">← На главную</a>
+    </div>
+
+    <div id="section-products" class="grid-products"></div>
+    <div id="pagination" class="pagination"></div>
+</main>
+
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Вход</h2>
+        <form id="auth-form">
+            <input type="email" id="auth-email" placeholder="Email" required>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <input type="text" id="auth-fullname" placeholder="ФИО" class="hidden">
+            <input type="text" id="auth-phone" placeholder="Телефон" class="hidden">
+            <button type="submit">Войти</button>
+        </form>
+        <p id="auth-switch">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+    </div>
+</div>
+
+<script type="module" src="/js/section-products.js"></script>
+</body>
+</html>

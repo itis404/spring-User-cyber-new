@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Лемана Про</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+</head>
+<body>
+<header class="admin-header">
+    <div class="admin-header-container">
+        <div class="admin-logo">
+            <span>Мебельлэнд | Админ-панель</span>
+        </div>
+        <div class="admin-header-actions">
+            <span id="admin-user-name" class="admin-user-name"></span>
+            <button id="admin-logout-btn" class="admin-logout-btn">Выйти</button>
+        </div>
+    </div>
+</header>
+
+<main class="admin-container">
+    <aside class="admin-sidebar">
+        <div class="admin-nav">
+            <div class="nav-group">
+                <div class="nav-group-title">Справочники</div>
+                <button class="admin-nav-btn" data-section="categories">
+                    <span class="nav-icon"></span> Категории
+                </button>
+                <button class="admin-nav-btn" data-section="statuses">
+                    <span class="nav-icon"></span> Статусы
+                </button>
+                <button class="admin-nav-btn" data-section="sections">
+                    <span class="nav-icon"></span> Секции
+                </button>
+                <button class="admin-nav-btn" data-section="styles">
+                    <span class="nav-icon"></span> Стили
+                </button>
+                <button class="admin-nav-btn" data-section="types">
+                    <span class="nav-icon"></span> Типы
+                </button>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-group-title">Управление</div>
+                <button class="admin-nav-btn" data-section="component-categories">
+                    <span class="nav-icon"></span> Категории компонентов
+                </button>
+                <button class="admin-nav-btn" data-section="components">
+                    <span class="nav-icon"></span> Компоненты
+                </button>
+                <button class="admin-nav-btn" data-section="products">
+                    <span class="nav-icon"></span> Товары
+                </button>
+                <button class="admin-nav-btn" data-section="attributes">
+                    <span class="nav-icon">️</span> Атрибуты
+                </button>
+                <button class="admin-nav-btn" data-section="attribute-values">
+                    <span class="nav-icon"></span> Значения атрибутов
+                </button>
+                <button class="admin-nav-btn" data-section="product-images">
+                    <span class="nav-icon">️</span> Изображения
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="admin-content">
+        <div id="categories-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление категориями</h2>
+                <button class="btn-primary" id="create-category-btn">+ Создать категорию</button>
+            </div>
+            <div id="create-category-form" class="admin-form hidden">
+                <h3>Создание категории</h3>
+                <div class="form-group">
+                    <label>Название категории</label>
+                    <input type="text" id="new-cat-name" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>Родительская категория (опционально)</label>
+                    <select id="new-cat-parent">
+                        <option value="">Нет (корневая категория)</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button id="save-category" class="btn-success">Сохранить</button>
+                    <button id="cancel-category" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="categories-list" class="items-list">
+                <div class="loader">Загрузка категорий...</div>
+            </div>
+        </div>
+
+        <div id="statuses-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление статусами</h2>
+                <button class="btn-primary" id="create-status-btn">+ Создать статус</button>
+            </div>
+            <div id="create-status-form" class="admin-form hidden">
+                <h3>Создание статуса</h3>
+                <div class="form-group">
+                    <label>Название статуса</label>
+                    <input type="text" id="new-status-name" placeholder="Введите название">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-status" class="btn-success">Сохранить</button>
+                    <button id="cancel-status" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="statuses-list" class="items-list">
+                <div class="loader">Загрузка статусов...</div>
+            </div>
+        </div>
+
+        <div id="sections-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление секциями</h2>
+                <button class="btn-primary" id="create-section-btn">+ Создать секцию</button>
+            </div>
+            <div id="create-section-form" class="admin-form hidden">
+                <h3>Создание секции</h3>
+                <div class="form-group">
+                    <label>Название секции</label>
+                    <input type="text" id="new-section-name" placeholder="Введите название">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-section" class="btn-success">Сохранить</button>
+                    <button id="cancel-section" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="sections-list" class="items-list">
+                <div class="loader">Загрузка секций...</div>
+            </div>
+        </div>
+
+        <div id="styles-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление стилями</h2>
+                <button class="btn-primary" id="create-style-btn">+ Создать стиль</button>
+            </div>
+            <div id="create-style-form" class="admin-form hidden">
+                <h3>Создание стиля</h3>
+                <div class="form-group">
+                    <label>Название стиля</label>
+                    <input type="text" id="new-style-name" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>URL изображения</label>
+                    <input type="text" id="new-style-image" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-style" class="btn-success">Сохранить</button>
+                    <button id="cancel-style" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="styles-list" class="items-list">
+                <div class="loader">Загрузка стилей...</div>
+            </div>
+        </div>
+
+        <div id="types-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление типами</h2>
+                <button class="btn-primary" id="create-type-btn">+ Создать тип</button>
+            </div>
+            <div id="create-type-form" class="admin-form hidden">
+                <h3>Создание типа</h3>
+                <div class="form-group">
+                    <label>Название типа</label>
+                    <input type="text" id="new-type-name" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>Имеет компоненты</label>
+                    <select id="new-type-has-components">
+                        <option value="false">Нет</option>
+                        <option value="true">Да</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button id="save-type" class="btn-success">Сохранить</button>
+                    <button id="cancel-type" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="types-list" class="items-list">
+                <div class="loader">Загрузка типов...</div>
+            </div>
+        </div>
+
+        <div id="component-categories-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление категориями компонентов</h2>
+                <button class="btn-primary" id="create-component-category-btn">+ Создать категорию компонента</button>
+            </div>
+            <div id="create-component-category-form" class="admin-form hidden">
+                <h3>Создание категории компонента</h3>
+                <div class="form-group">
+                    <label>Название категории</label>
+                    <input type="text" id="new-comp-cat-name" placeholder="Введите название">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-component-category" class="btn-success">Сохранить</button>
+                    <button id="cancel-component-category" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="component-categories-list" class="items-list">
+                <div class="loader">Загрузка категорий компонентов...</div>
+            </div>
+        </div>
+
+        <div id="components-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление компонентами</h2>
+                <button class="btn-primary" id="create-component-btn">+ Создать компонент</button>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="comp-search-name" placeholder="Название компонента">
+                <input type="text" id="comp-search-material" placeholder="Материал">
+                <input type="text" id="comp-search-country" placeholder="Страна">
+                <div class="price-filter">
+                    <input type="number" id="comp-search-price-min" placeholder="Цена от">
+                    <input type="number" id="comp-search-price-max" placeholder="Цена до">
+                </div>
+                <button id="comp-search-btn" class="btn-secondary">Поиск</button>
+                <button id="comp-reset-btn" class="btn-secondary">Сбросить</button>
+            </div>
+            <div id="create-component-form" class="admin-form hidden">
+                <h3>Создание компонента</h3>
+                <div class="form-group">
+                    <label>Название компонента</label>
+                    <input type="text" id="new-comp-name" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>Категория компонента</label>
+                    <select id="new-comp-category">
+                        <option value="">Выберите категорию</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Материал</label>
+                    <input type="text" id="new-comp-material" placeholder="Материал">
+                </div>
+                <div class="form-group">
+                    <label>Страна</label>
+                    <input type="text" id="new-comp-country" placeholder="Страна">
+                </div>
+                <div class="form-group">
+                    <label>Цена</label>
+                    <input type="number" id="new-comp-cost" placeholder="Цена" step="0.01">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-component" class="btn-success">Сохранить</button>
+                    <button id="cancel-component" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="components-list" class="items-list">
+                <div class="loader">Загрузка компонентов...</div>
+            </div>
+            <div id="components-pagination" class="pagination"></div>
+        </div>
+
+        <div id="products-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление товарами</h2>
+                <button class="btn-primary" id="create-product-step1-btn">+ Создать товар</button>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="prod-search-name" placeholder="Название товара">
+                <div class="price-filter">
+                    <input type="number" id="prod-search-price-min" placeholder="Цена от">
+                    <input type="number" id="prod-search-price-max" placeholder="Цена до">
+                </div>
+                <div class="price-filter">
+                    <input type="number" id="prod-search-discount-min" placeholder="Скидка от %">
+                    <input type="number" id="prod-search-discount-max" placeholder="Скидка до %">
+                </div>
+                <select id="prod-search-category">
+                    <option value="">Все категории</option>
+                </select>
+                <select id="prod-search-style">
+                    <option value="">Все стили</option>
+                </select>
+                <select id="prod-search-type">
+                    <option value="">Все типы</option>
+                </select>
+                <select id="prod-search-status">
+                    <option value="">Все статусы</option>
+                </select>
+                <button id="prod-search-btn" class="btn-secondary">Поиск</button>
+                <button id="prod-reset-btn" class="btn-secondary">Сбросить</button>
+            </div>
+
+            <div id="create-product-step1-form" class="admin-form hidden">
+                <h3>Шаг 1: Основная информация о товаре</h3>
+                <div class="form-group">
+                    <label>Название товара *</label>
+                    <input type="text" id="new-prod-name" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>Описание</label>
+                    <textarea id="new-prod-description" rows="3" placeholder="Описание товара"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Цена *</label>
+                    <input type="number" id="new-prod-price" placeholder="Цена" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Скидка (%)</label>
+                    <input type="number" id="new-prod-discount" placeholder="Скидка" value="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Категория</label>
+                    <select id="new-prod-category">
+                        <option value="">Выберите категорию</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Тип</label>
+                    <select id="new-prod-type">
+                        <option value="">Выберите тип</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Статус</label>
+                    <select id="new-prod-status">
+                        <option value="">Выберите статус</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Стиль</label>
+                    <select id="new-prod-style">
+                        <option value="">Выберите стиль</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Секции (можно выбрать несколько)</label>
+                    <select id="new-prod-sections" multiple size="5">
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button id="save-product-step1" class="btn-success">Далее →</button>
+                    <button id="cancel-product-step1" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+
+            <div id="create-product-step2-form" class="admin-form hidden">
+                <h3>Шаг 2: Дополнительные поля товара</h3>
+                <div class="form-group">
+                    <label>ID товара</label>
+                    <input type="number" id="extra-product-id" readonly placeholder="ID будет заполнен автоматически">
+                </div>
+                <div class="form-group">
+                    <label>Компоненты (можно выбрать несколько)</label>
+                    <select id="extra-components" multiple size="5">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Изображения (ID изображений через запятую)</label>
+                    <input type="text" id="extra-images" placeholder="Например: 1, 2, 3">
+                </div>
+                <div class="form-group">
+                    <label>Похожие товары (ID товаров через запятую)</label>
+                    <input type="text" id="extra-subproducts" placeholder="Например: 10, 20, 30">
+                </div>
+                <div class="form-group">
+                    <label>Значения атрибутов (ID значений через запятую)</label>
+                    <input type="text" id="extra-attribute-values" placeholder="Например: 100, 200, 300">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-product-step2" class="btn-success">Сохранить товар</button>
+                    <button id="back-product-step1" class="btn-secondary">← Назад</button>
+                    <button id="cancel-product-step2" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+
+            <div id="products-list" class="items-list">
+                <div class="loader">Загрузка товаров...</div>
+            </div>
+            <div id="products-pagination" class="pagination"></div>
+        </div>
+
+        <div id="attributes-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление атрибутами</h2>
+                <button class="btn-primary" id="create-attribute-btn">+ Создать атрибут</button>
+            </div>
+            <div id="create-attribute-form" class="admin-form hidden">
+                <h3>Создание атрибута</h3>
+                <div class="form-group">
+                    <label>Название атрибута</label>
+                    <input type="text" id="new-attr-name" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>Тип атрибута</label>
+                    <select id="new-attr-type">
+                        <option value="TEXT">Текст</option>
+                        <option value="NUMBER">Число</option>
+                        <option value="BOOLEAN">Да/Нет</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button id="save-attribute" class="btn-success">Сохранить</button>
+                    <button id="cancel-attribute" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="attributes-list" class="items-list">
+                <div class="loader">Загрузка атрибутов...</div>
+            </div>
+        </div>
+
+        <div id="attribute-values-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление значениями атрибутов</h2>
+                <button class="btn-primary" id="create-attribute-value-btn">+ Создать значение атрибута</button>
+            </div>
+            <div class="search-bar">
+                <select id="attr-value-filter">
+                    <option value="">Все атрибуты</option>
+                </select>
+                <button id="filter-attr-value-btn" class="btn-secondary">Фильтр</button>
+            </div>
+            <div id="create-attribute-value-form" class="admin-form hidden">
+                <h3>Создание значения атрибута</h3>
+                <div class="form-group">
+                    <label>Атрибут</label>
+                    <select id="new-attr-value-attribute">
+                        <option value="">Выберите атрибут</option>
+                    </select>
+                </div>
+                <div class="form-group" id="new-attr-value-text-group">
+                    <label>Текстовое значение</label>
+                    <input type="text" id="new-attr-value-text" placeholder="Введите текст">
+                </div>
+                <div class="form-group" id="new-attr-value-number-group" style="display: none;">
+                    <label>Числовое значение</label>
+                    <input type="number" id="new-attr-value-number" placeholder="Введите число" step="any">
+                </div>
+                <div class="form-group" id="new-attr-value-boolean-group" style="display: none;">
+                    <label>Логическое значение</label>
+                    <select id="new-attr-value-boolean">
+                        <option value="true">Да</option>
+                        <option value="false">Нет</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button id="save-attribute-value" class="btn-success">Сохранить</button>
+                    <button id="cancel-attribute-value" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="attribute-values-list" class="items-list">
+                <div class="loader">Загрузка значений атрибутов...</div>
+            </div>
+        </div>
+
+        <div id="product-images-section" class="admin-section">
+            <div class="section-header">
+                <h2>Управление изображениями товаров</h2>
+                <button class="btn-primary" id="create-image-btn">+ Создать изображение</button>
+            </div>
+            <div class="search-bar">
+                <input type="number" id="image-product-filter" placeholder="ID товара">
+                <button id="filter-images-btn" class="btn-secondary">Фильтр по товару</button>
+                <button id="reset-images-btn" class="btn-secondary">Сбросить</button>
+            </div>
+            <div id="create-image-form" class="admin-form hidden">
+                <h3>Создание изображения</h3>
+                <div class="form-group">
+                    <label>ID товара</label>
+                    <input type="number" id="new-image-product-id" placeholder="ID товара">
+                </div>
+                <div class="form-group">
+                    <label>URL изображения</label>
+                    <input type="text" id="new-image-path" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label>Основное изображение</label>
+                    <select id="new-image-is-main">
+                        <option value="false">Нет</option>
+                        <option value="true">Да</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Порядок сортировки</label>
+                    <input type="number" id="new-image-sort-order" placeholder="0">
+                </div>
+                <div class="form-buttons">
+                    <button id="save-image" class="btn-success">Сохранить</button>
+                    <button id="cancel-image" class="btn-secondary">Отмена</button>
+                </div>
+            </div>
+            <div id="product-images-list" class="items-list">
+                <div class="loader">Загрузка изображений...</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Редактирование</h2>
+        <div class="form-group">
+            <label>Название</label>
+            <input type="text" id="edit-name">
+        </div>
+        <div class="form-buttons">
+            <button id="save-edit" class="btn-success">Сохранить</button>
+            <button id="cancel-edit" class="btn-secondary">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<div id="edit-component-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Редактирование компонента</h2>
+        <div class="form-group">
+            <label>Название</label>
+            <input type="text" id="edit-comp-name">
+        </div>
+        <div class="form-group">
+            <label>Категория</label>
+            <select id="edit-comp-category"></select>
+        </div>
+        <div class="form-group">
+            <label>Материал</label>
+            <input type="text" id="edit-comp-material">
+        </div>
+        <div class="form-group">
+            <label>Страна</label>
+            <input type="text" id="edit-comp-country">
+        </div>
+        <div class="form-group">
+            <label>Цена</label>
+            <input type="number" id="edit-comp-cost" step="0.01">
+        </div>
+        <div class="form-buttons">
+            <button id="save-comp-edit" class="btn-success">Сохранить</button>
+            <button id="cancel-comp-edit" class="btn-secondary">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<div id="edit-attribute-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Редактирование атрибута</h2>
+        <div class="form-group">
+            <label>Название</label>
+            <input type="text" id="edit-attr-name">
+        </div>
+        <div class="form-group">
+            <label>Тип</label>
+            <select id="edit-attr-type">
+                <option value="TEXT">Текст</option>
+                <option value="NUMBER">Число</option>
+                <option value="BOOLEAN">Да/Нет</option>
+            </select>
+        </div>
+        <div class="form-buttons">
+            <button id="save-attr-edit" class="btn-success">Сохранить</button>
+            <button id="cancel-attr-edit" class="btn-secondary">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<div id="edit-image-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Редактирование изображения</h2>
+        <div class="form-group">
+            <label>URL изображения</label>
+            <input type="text" id="edit-image-path">
+        </div>
+        <div class="form-group">
+            <label>Основное изображение</label>
+            <select id="edit-image-is-main">
+                <option value="false">Нет</option>
+                <option value="true">Да</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Порядок сортировки</label>
+            <input type="number" id="edit-image-sort-order">
+        </div>
+        <div class="form-buttons">
+            <button id="save-image-edit" class="btn-success">Сохранить</button>
+            <button id="cancel-image-edit" class="btn-secondary">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<div id="edit-similar-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Управление похожими товарами</h2>
+        <div class="form-group">
+            <label>ID товара</label>
+            <input type="number" id="similar-product-id" placeholder="ID основного товара">
+        </div>
+        <div class="form-group">
+            <label>ID похожего товара</label>
+            <input type="number" id="similar-sub-id" placeholder="ID похожего товара">
+        </div>
+        <div class="form-buttons">
+            <button id="add-similar-btn" class="btn-success">Добавить</button>
+            <button id="remove-similar-btn" class="btn-danger">Удалить</button>
+            <button id="cancel-similar" class="btn-secondary">Отмена</button>
+        </div>
+        <div id="similar-list" class="similar-list" style="margin-top: 20px;"></div>
+    </div>
+</div>
+
+<script type="module" src="/js/admin/admin.js"></script>
+</body>
+</html>

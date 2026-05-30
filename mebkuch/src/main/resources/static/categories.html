@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории - Мебельлэнд</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/categories.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="/" class="logo">Мебельлэнд</a>
+        <div class="search-box">
+            <input type="text" id="global-search" placeholder="Поиск товаров...">
+            <button id="btn-global-search">Найти</button>
+        </div>
+        <div class="auth-box" id="auth-box"></div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/catalog.html">Каталог</a>
+            <a href="/categories.html" class="active">Категории</a>
+            <a href="/components.html">Компоненты</a>
+            <a href="/about.html">О компании</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="categories-header">
+        <h1>Категории товаров</h1>
+        <p>Выберите категорию для просмотра товаров</p>
+    </div>
+
+    <div class="categories-tree" id="categories-tree">
+        <div class="loader">Загрузка категорий...</div>
+    </div>
+</main>
+
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Вход</h2>
+        <form id="auth-form">
+            <input type="email" id="auth-email" placeholder="Email" required>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <input type="text" id="auth-fullname" placeholder="ФИО" class="hidden">
+            <input type="text" id="auth-phone" placeholder="Телефон" class="hidden">
+            <button type="submit">Войти</button>
+        </form>
+        <p id="auth-switch">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+    </div>
+</div>
+
+<script type="module" src="/js/categories.js"></script>
+</body>
+</html>

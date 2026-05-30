@@ -1,0 +1,16 @@
+package org.example.mebkuch.domain.models.category;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class CategoryModel {
+    private Long id;
+    private String name;
+    private Long parentId;
+}

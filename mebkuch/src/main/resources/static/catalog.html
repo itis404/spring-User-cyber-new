@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мебельлэнд - Каталог</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/catalog.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="/" class="logo">Мебельлэнд</a>
+        <div class="auth-box" id="auth-box"></div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/catalog.html">Каталог</a>
+            <a href="/categories.html">Категории</a>
+            <a href="/components.html">Компоненты</a>
+            <a href="/about.html">О компании</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container catalog-layout">
+    <aside class="sidebar">
+        <h3>Фильтры</h3>
+        <form id="filter-form">
+
+            <div class="filter-group">
+                <label>Поиск по имени:</label>
+                <input type="text" name="name" placeholder="Название товара">
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Цена</h4>
+                <div class="price-filter">
+                    <input type="number" name="minPrice" placeholder="От ₽">
+                    <input type="number" name="maxPrice" placeholder="До ₽">
+                </div>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Скидка</h4>
+                <div class="price-filter">
+                    <input type="number" name="minDiscount" placeholder="От %">
+                    <input type="number" name="maxDiscount" placeholder="До %">
+                </div>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Дата создания</h4>
+                <input type="date" name="createdAt">
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Сортировка</h4>
+                <select id="sort-select" class="sort-select">
+                    <option value="id,desc">Новинки</option>
+                    <option value="minPrice,asc">Цена: по возрастанию</option>
+                    <option value="minPrice,desc">Цена: по убыванию</option>
+                    <option value="name,asc">Название: А-Я</option>
+                    <option value="name,desc">Название: Я-А</option>
+                    <option value="discount,desc">Максимальная скидка</option>
+                </select>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Категории</h4>
+                <div id="filter-categories" class="checkbox-list"></div>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Стили</h4>
+                <div id="filter-styles" class="checkbox-list"></div>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Типы</h4>
+                <div id="filter-types" class="checkbox-list"></div>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Статусы</h4>
+                <div id="filter-statuses" class="checkbox-list"></div>
+            </div>
+
+
+            <div class="filter-group">
+                <h4>Поиск по одному омпоненту</h4>
+                <div class="component-filter">
+                    <input type="text" name="componentName" placeholder="Название компонента">
+                    <input type="text" name="componentMaterial" placeholder="Материал">
+                    <input type="text" name="componentCountry" placeholder="Страна">
+                    <h4>Стоимость всех компонентов в продукте</h4>
+                    <div class="price-filter">
+                        <input type="number" name="componentBeginCost" placeholder="Цена от">
+                        <input type="number" name="componentEndCost" placeholder="Цена до">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="filter-group" id="dynamic-attributes">
+                <h4>Характеристики</h4>
+                <button type="button" id="add-attribute-btn">+ Добавить характеристику</button>
+                <div id="attributes-container"></div>
+            </div>
+
+            <button type="submit" class="apply-btn">Применить</button>
+            <button type="reset" class="reset-btn">Сбросить</button>
+        </form>
+    </aside>
+
+    <section class="products-area">
+        <div id="catalog-products" class="grid-products"></div>
+        <div id="pagination" class="pagination"></div>
+    </section>
+</main>
+
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Вход</h2>
+        <form id="auth-form">
+            <input type="email" id="auth-email" placeholder="Email" required>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <input type="text" id="auth-fullname" placeholder="ФИО" class="hidden">
+            <input type="text" id="auth-phone" placeholder="Телефон" class="hidden">
+            <button type="submit">Войти</button>
+        </form>
+        <p id="auth-switch">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+    </div>
+</div>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

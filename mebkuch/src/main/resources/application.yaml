@@ -1,0 +1,32 @@
+spring:
+  cache:
+    type: redis
+  data:
+    redis:
+      host: localhost
+      port: 7000
+
+
+  application:
+    name: mebkuch
+
+  datasource:
+    url: ${URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    hikari:
+      schema: test
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+
+variables:
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+  SECRET_KEY_JWT: ${SECRET_KEY_JWT}
+
+
+springdoc:
+  swagger-ui:
+    path: /my-custom-swagger
