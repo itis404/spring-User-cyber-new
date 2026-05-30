@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Компоненты - Мебельлэнд</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="/" class="logo">Мебельлэнд</a>
+        <div class="search-box">
+            <input type="text" id="global-search" placeholder="Поиск компонентов...">
+            <button id="btn-global-search">Найти</button>
+        </div>
+        <div class="auth-box" id="auth-box"></div>
+    </div>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="/catalog.html">Каталог</a>
+            <a href="/categories.html">Категории</a>
+            <a href="/components.html" class="active">Компоненты</a>
+            <a href="/about.html">О компании</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="components-layout">
+
+        <aside class="components-sidebar">
+            <h3>Фильтры компонентов</h3>
+            <form id="components-filter-form">
+                <div class="filter-group">
+                    <label>Название</label>
+                    <input type="text" name="name" placeholder="Название компонента">
+                </div>
+
+                <div class="filter-group">
+                    <label>Материал</label>
+                    <input type="text" name="material" placeholder="Материал">
+                </div>
+
+                <div class="filter-group">
+                    <label>Страна</label>
+                    <input type="text" name="country" placeholder="Страна производитель">
+                </div>
+
+                <div class="filter-group">
+                    <label>Цена</label>
+                    <div class="price-filter">
+                        <input type="number" name="begin-cost" placeholder="От ₽">
+                        <input type="number" name="end-cost" placeholder="До ₽">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label>Категория</label>
+                    <select id="component-category" name="categoryId">
+                        <option value="">Все категории</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Сортировка</label>
+                    <select id="component-sort">
+                        <option value="id,desc">По умолчанию</option>
+                        <option value="name,asc">Название (А-Я)</option>
+                        <option value="name,desc">Название (Я-А)</option>
+                        <option value="cost,asc">Цена (по возрастанию)</option>
+                        <option value="cost,desc">Цена (по убыванию)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="apply-btn">Применить</button>
+                <button type="reset" class="reset-btn">Сбросить</button>
+            </form>
+        </aside>
+
+
+        <section class="components-area">
+            <div class="components-header">
+                <h2>Компоненты</h2>
+                <div class="components-count" id="components-count"></div>
+            </div>
+            <div id="components-list" class="components-grid"></div>
+            <div id="components-pagination" class="pagination"></div>
+        </section>
+    </div>
+</main>
+
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title">Вход</h2>
+        <form id="auth-form">
+            <input type="email" id="auth-email" placeholder="Email" required>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <input type="text" id="auth-fullname" placeholder="ФИО" class="hidden">
+            <input type="text" id="auth-phone" placeholder="Телефон" class="hidden">
+            <button type="submit">Войти</button>
+        </form>
+        <p id="auth-switch">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+    </div>
+</div>
+
+<script type="module" src="/js/components.js"></script>
+</body>
+</html>

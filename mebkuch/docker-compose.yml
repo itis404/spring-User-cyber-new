@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  java-app:
+    build: .
+    container_name: java-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      mebkuch-db-meb-1:
+        condition: service_healthy
+      valkey-meb:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://mebkuch-db-meb-1:5432/dev1?currentSchema=test
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATA_REDIS_HOST: valkey-meb
+      SPRING_DATA_REDIS_PORT: 6379
+      SECRET_KEY_JWT: ${SECRET_KEY_JWT}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+    networks:
+      - app-network
+    restart: on-failure
+
+  mebkuch-db-meb-1:
+    image: postgres:17-alpine
+    container_name: mebkuch-db-meb-1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: dev1
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5000:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./dump:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d dev1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  valkey-meb:
+    image: valkey/valkey:7.2-alpine
+    container_name: valkey
+    ports:
+      - "7000:6379"
+    volumes:
+      - ./valkey-data:/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мебельлэнд - Главная</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<header class="main-header">
+  <div class="container header-container">
+    <a href="/" class="logo">Мебельлэнд</a>
+    <div class="search-box">
+      <input type="text" id="global-search" placeholder="Поиск товаров...">
+      <button id="btn-global-search">Найти</button>
+    </div>
+    <div class="auth-box" id="auth-box"></div>
+
+  </div>
+  <nav class="main-nav">
+    <div class="container">
+      <a href="/catalog.html">Каталог</a>
+      <a href="/categories.html">Категории</a>
+      <a href="/components.html">Компоненты</a>
+      <a href="/about.html">О компании</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section id="sections-banner" class="banner-slider"></section>
+
+
+  <h2>Основные категории</h2>
+  <div id="root-categories" class="grid-cats"></div>
+
+
+  <div class="styles-section">
+    <h2>Стили</h2>
+    <div id="styles-list" class="styles-grid"></div>
+  </div>
+
+
+  <h2>Супер акции</h2>
+  <div id="discount-products" class="grid-products"></div>
+
+
+  <div class="types-section">
+    <h2>Типы товаров</h2>
+    <ul id="types-list" class="types-list"></ul>
+  </div>
+</main>
+
+<div id="auth-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2 id="modal-title">Вход</h2>
+    <form id="auth-form">
+      <input type="email" id="auth-email" placeholder="Email" required>
+      <input type="password" id="auth-password" placeholder="Пароль" required>
+      <input type="text" id="auth-fullname" placeholder="ФИО" class="hidden">
+      <input type="text" id="auth-phone" placeholder="Телефон" class="hidden">
+      <button type="submit">Войти</button>
+    </form>
+    <p id="auth-switch">Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+  </div>
+</div>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>
